@@ -23,7 +23,6 @@
 
 'use strict';
 const numberOfFilms = Number(prompt("How many movies you have watched","15"));
-console.log(typeof(numberOfFilms), numberOfFilms);
 
 const personalMovieDB = {
     count: 0,
@@ -32,3 +31,6 @@ const personalMovieDB = {
     genres: [],
     privat: false
 };
+
+personalMovieDB.count = Number(numberOfFilms);
+console.log(personalMovieDB);
