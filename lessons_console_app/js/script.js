@@ -22,4 +22,5 @@
 Проверить, чтобы все работало без ошибок в консоли */
 
 'use strict';
-const numberOfFilms = prompt("How many movies you have watched","15");
+const numberOfFilms = Number(prompt("How many movies you have watched","15"));
+console.log(typeof(numberOfFilms), numberOfFilms);
