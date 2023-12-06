@@ -23,6 +23,8 @@
 
 'use strict';
 const numberOfFilms = Number(prompt("How many movies you have watched","15"));
+const movieTitle = prompt("One of the last movies you saw?","Logan");
+const rate = Number(prompt("Rate the movie on a scale of 1 to 10","8"));
 
 const personalMovieDB = {
     count: 0,
@@ -33,4 +35,6 @@ const personalMovieDB = {
 };
 
 personalMovieDB.count = Number(numberOfFilms);
+personalMovieDB.movies = `'${movieTitle}': '${rate}'`;
+
 console.log(personalMovieDB);
