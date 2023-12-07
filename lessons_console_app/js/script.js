@@ -22,19 +22,25 @@
 Проверить, чтобы все работало без ошибок в консоли */
 
 'use strict';
-const numberOfFilms = Number(prompt("How many movies you have watched","15"));
-const movieTitle = prompt("One of the last movies you saw?","Logan");
-const rate = Number(prompt("Rate the movie on a scale of 1 to 10","8"));
+const numberOfFilms = +prompt("How many movies you have watched","");
 
 const personalMovieDB = {
-    count: 0,
+    count: numberOfFilms,
     movies: {},
     actors: {},
     genres: [],
     privat: false
 };
 
-personalMovieDB.count = Number(numberOfFilms);
-personalMovieDB.movies = `'${movieTitle}': '${rate}'`;
+// const a = prompt('');
+
+const movieTitle = prompt('One of the last movies you saw?',''),
+            rate = +prompt('Rate the movie on a scale of 1 to 10',''),
+      movieTitle2 = prompt('One of the last movies you saw?',''),
+            rate2 = +prompt('Rate the movie on a scale of 1 to 10','');
+
+
+personalMovieDB.movies[movieTitle] = rate;
+personalMovieDB.movies[movieTitle2] = rate2;
 
 console.log(personalMovieDB);
