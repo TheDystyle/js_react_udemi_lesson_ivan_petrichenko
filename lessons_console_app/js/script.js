@@ -38,8 +38,31 @@
 
 // Код возьмите из предыдущего домашнего задания
 
+/* Задание на урок:
+
++ 1) Первую часть задания повторить по уроку
+
+2) Создать функцию showMyDB, которая будет проверять свойство privat. Если стоит в позиции
+false - выводит в консоль главный объект программы
+
+3) Создать функцию writeYourGenres в которой пользователь будет 3 раза отвечать на вопрос 
+"Ваш любимый жанр под номером ${номер по порядку}". Каждый ответ записывается в массив данных
+genres
+
+P.S. Функции вызывать не обязательно*/
+
 'use strict';
-const numberOfFilms = +prompt("How many movies you have watched","");
+let numberOfFilms;
+
+function start() {
+    numberOfFilms = +prompt("How many movies you have watched","");
+
+    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+        numberOfFilms = +prompt("How many movies you have watched","");
+    }
+}
+
+//start();
 
 const personalMovieDB = {
     count: numberOfFilms,
@@ -48,28 +71,60 @@ const personalMovieDB = {
     genres: [],
     privat: false
 };
-for(let i = 0; i < 2; i++){
-    const a = prompt('One of the last movies you saw?',''),
-          b = +prompt('Rate the movie on a scale of 1 to 10','');
-    if(a != null && b != null && a != '' && b != '' && a.length < 50){
-        personalMovieDB.movies[a] = b;
-        console.log("done");
+
+function rememberMyFilms() {
+    for(let i = 0; i < 2; i++){
+        const a = prompt('One of the last movies you saw?',''),
+              b = +prompt('Rate the movie on a scale of 1 to 10','');
+        if(a != null && b != null && a != '' && b != '' && a.length < 50){
+            personalMovieDB.movies[a] = b;
+            console.log("done");
+        } else {
+            console.log("error");
+            i--;
+        }    
+    }
+}
+
+//rememberMyFilms();
+
+function detectPersonalLevel() {
+    if(personalMovieDB.count < 10) {
+        console.log('There are quite a few films that have been watched');
+    } else if (personalMovieDB.count >= 10 && personalMovieDB.count <= 30) {
+        console.log("You're a classic viewer");
+    } else if (personalMovieDB.count > 30) {
+        console.log("You're a film geek.");
     } else {
-        console.log("error");
-        i--;
-    }    
+        console.log("Error");
+    }
 }
 
-if(personalMovieDB.count < 10) {
-    console.log('There are quite a few films that have been watched');
-} else if (personalMovieDB.count >= 10 && personalMovieDB.count <= 30) {
-    console.log("You're a classic viewer");
-} else if (personalMovieDB.count > 30) {
-    console.log("You're a film geek.");
-} else {
-    console.log("Error");
+//detectPersonalLevel();
+
+// function showMyDB() {
+//     // 1st variant
+//     if (personalMovieDB.privat == false) {
+//         console.log(personalMovieDB);
+//     } else {
+//         console.log("privat = true");
+//     }   
+// }
+
+// 2nd variant
+function showMyDB(hidden) {
+    if (!hidden) {
+        console.log(personalMovieDB);
+    }
 }
 
+showMyDB(personalMovieDB.privat);
 
-
-console.log(personalMovieDB);
+function writeYourGenres() {
+    for (let i = 1; i < 4; i++) {
+        personalMovieDB.genres[i - 1] = prompt (`What is your favorite genre? ${i+1}`, `comedy`);;
+        console.log(personalMovieDB.genres);
+    }
+}
+writeYourGenres();
+console.log(personalMovieDB); 
